@@ -55,7 +55,7 @@ module('Unit | Helper | arg-type', function(hooks) {
   });
 
   module('boolean validator', function() {
-    test('it throws an error when provided non boolean', function(assert) {
+    test('it throws an error when not provided a boolean', function(assert) {
       assert.throws(
         function () {
           argType([undefined, 'boolean'], this.context)
@@ -139,7 +139,7 @@ module('Unit | Helper | arg-type', function(hooks) {
   });
 
   module('function validator', function() {
-    test('it throws an error when provided non function', function(assert) {
+    test('it throws an error when not provided a function', function(assert) {
       assert.throws(
         function () {
           argType([undefined, 'function'], this.context)
@@ -223,7 +223,7 @@ module('Unit | Helper | arg-type', function(hooks) {
   });
 
   module('null validator', function() {
-    test('it throws an error when provided non string', function(assert) {
+    test('it throws an error when not provided null', function(assert) {
       assert.throws(
         function () {
           argType([undefined, 'null'], this.context)
@@ -307,7 +307,7 @@ module('Unit | Helper | arg-type', function(hooks) {
   });
 
   module('number validator', function() {
-    test('it throws an error when provided non string', function(assert) {
+    test('it throws an error when not provided a number', function(assert) {
       assert.throws(
         function () {
           argType([undefined, 'number'], this.context)
@@ -387,7 +387,7 @@ module('Unit | Helper | arg-type', function(hooks) {
   });
 
   module('object validator', function() {
-    test('it throws an error when provided non string', function(assert) {
+    test('it throws an error when not provided an object', function(assert) {
       assert.throws(
         function () {
           argType([undefined, 'object'], this.context)
@@ -443,7 +443,7 @@ module('Unit | Helper | arg-type', function(hooks) {
         'it throws an error when provided a function',
       );
     });
-    test('it returns undefined when provided a number', function(assert) {
+    test('it returns undefined when provided a object', function(assert) {
       assert.equal(
         argType([{}, 'object'], this.context),
         undefined,
@@ -458,7 +458,7 @@ module('Unit | Helper | arg-type', function(hooks) {
   });
 
   module('string validator', function() {
-    test('it throws an error when provided non string', function(assert) {
+    test('it throws an error when not provided a string', function(assert) {
       assert.throws(
         function () {
           argType([undefined, 'string'], this.context)
@@ -542,7 +542,7 @@ module('Unit | Helper | arg-type', function(hooks) {
   });
 
   module('symbol validator', function() {
-    test('it throws an error when provided non string', function(assert) {
+    test('it throws an error when not provided symbol', function(assert) {
       assert.throws(
         function () {
           argType([undefined, 'symbol'], this.context)
@@ -617,7 +617,7 @@ module('Unit | Helper | arg-type', function(hooks) {
   });
 
   module('undefined validator', function() {
-    test('it throws an error when provided non string', function(assert) {
+    test('it throws an error when not provided undefined', function(assert) {
       assert.throws(
         function () {
           argType([null, 'undefined'], this.context)
@@ -744,7 +744,7 @@ module('Unit | Helper | arg-type', function(hooks) {
     })
   });
 
-  module('unknown validators', function(hooks) {
+  module('unknown validators', function() {
     test('it throws an error when the validator string is not supported', function(assert) {
       assert.throws(
         function () {
