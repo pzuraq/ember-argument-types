@@ -283,7 +283,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([() => {}, 'null'], this.context)
         },
         function (err) {
-          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received function () => {}')
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received function () {}')
             || err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received () => {}');
         },
         'it throws an error when provided a function',
@@ -678,7 +678,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([() => {}, 'undefined'], this.context)
         },
         function (err) {
-          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received function () => {}')
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received function () {}')
             || err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received () => {}');
         },
         'it throws an error when provided a function',
