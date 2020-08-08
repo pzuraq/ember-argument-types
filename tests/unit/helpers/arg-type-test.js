@@ -61,7 +61,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([undefined, 'boolean'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type boolean but received undefined';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type boolean but received undefined');
         },
         'it throws an error when provided undefined',
       );
@@ -70,7 +70,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([null, 'boolean'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type boolean but received null';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type boolean but received null');
         },
         'it throws an error when provided null',
       );
@@ -79,7 +79,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([NaN, 'boolean'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type boolean but received number';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type boolean but received number');
         },
         'it throws an error when provided NaN',
       );
@@ -88,7 +88,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([Symbol(), 'boolean'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type boolean but received symbol';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type boolean but received symbol');
         },
         'it throws an error when provided symbol',
       );
@@ -97,7 +97,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([10, 'boolean'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type boolean but received number';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type boolean but received number');
         },
         'it throws an error when provided a number',
       );
@@ -106,7 +106,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType(['test', 'boolean'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type boolean but received string';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type boolean but received string');
         },
         'it throws an error when provided a string',
       );
@@ -115,7 +115,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([() => {}, 'boolean'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type boolean but received function';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type boolean but received function');
         },
         'it throws an error when provided a function',
       );
@@ -124,7 +124,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([{}, 'boolean'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type boolean but received object';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type boolean but received object');
         },
         'it throws an error when provided an object',
       );
@@ -145,7 +145,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([undefined, 'function'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type function but received undefined';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type function but received undefined');
         },
         'it throws an error when provided undefined',
       );
@@ -154,7 +154,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([null, 'function'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type function but received null';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type function but received null');
         },
         'it throws an error when provided null',
       );
@@ -163,7 +163,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([NaN, 'function'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type function but received number';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type function but received number');
         },
         'it throws an error when provided NaN',
       );
@@ -172,7 +172,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([Symbol(), 'function'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type function but received symbol';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type function but received symbol');
         },
         'it throws an error when provided symbol',
       );
@@ -181,7 +181,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([10, 'function'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type function but received number';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type function but received number');
         },
         'it throws an error when provided a number',
       );
@@ -190,7 +190,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType(['test', 'function'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type function but received string';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type function but received string');
         },
         'it throws an error when provided a string',
       );
@@ -199,7 +199,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([true, 'function'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type function but received boolean';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type function but received boolean');
         },
         'it throws an error when provided a boolean',
       );
@@ -208,7 +208,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([{}, 'function'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type function but received object';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type function but received object');
         },
         'it throws an error when provided an object',
       );
@@ -229,8 +229,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([undefined, 'null'], this.context)
         },
         function (err) {
-          console.log(err.message);
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received undefined';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received undefined');
         },
         'it throws an error when provided undefined',
       );
@@ -239,8 +238,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([NaN, 'null'], this.context)
         },
         function (err) {
-          console.log(err.message);
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received NaN';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received NaN');
         },
         'it throws an error when provided NaN',
       );
@@ -249,8 +247,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([Symbol(), 'null'], this.context)
         },
         function (err) {
-          console.log(err.message);
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received Symbol()';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received Symbol()');
         },
         'it throws an error when provided symbol',
       );
@@ -259,8 +256,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([10, 'null'], this.context)
         },
         function (err) {
-          console.log(err.message);
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received 10';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received 10');
         },
         'it throws an error when provided a number',
       );
@@ -269,8 +265,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType(['hello', 'null'], this.context)
         },
         function (err) {
-          console.log(err.message);
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received "hello"';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received "hello"');
         },
         'it throws an error when provided a string',
       );
@@ -279,8 +274,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([true, 'null'], this.context)
         },
         function (err) {
-          console.log(err.message);
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received true';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received true');
         },
         'it throws an error when provided a boolean',
       );
@@ -289,8 +283,8 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([() => {}, 'null'], this.context)
         },
         function (err) {
-          console.log(err.message);
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received () => {}';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received function () => {}')
+            || err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received () => {}');
         },
         'it throws an error when provided a function',
       );
@@ -299,8 +293,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([{}, 'null'], this.context)
         },
         function (err) {
-          console.log(err.message);
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received [object Object]';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal null but received [object Object]');
         },
         'it throws an error when provided an object',
       );
@@ -321,7 +314,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([undefined, 'number'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type number but received undefined';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type number but received undefined');
         },
         'it throws an error when provided undefined',
       );
@@ -330,7 +323,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([null, 'number'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type number but received null';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type number but received null');
         },
         'it throws an error when provided null',
       );
@@ -339,7 +332,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([Symbol(), 'number'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type number but received symbol';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type number but received symbol');
         },
         'it throws an error when provided symbol',
       );
@@ -348,7 +341,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType(['test', 'number'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type number but received string';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type number but received string');
         },
         'it throws an error when provided a string',
       );
@@ -357,7 +350,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([true, 'number'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type number but received boolean';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type number but received boolean');
         },
         'it throws an error when provided a boolean',
       );
@@ -366,7 +359,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([() => {}, 'number'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type number but received function';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type number but received function');
         },
         'it throws an error when provided a function',
       );
@@ -375,7 +368,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([{}, 'number'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type number but received object';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type number but received object');
         },
         'it throws an error when provided an object',
       );
@@ -401,7 +394,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([undefined, 'object'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type object but received undefined';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type object but received undefined');
         },
         'it throws an error when provided undefined',
       );
@@ -410,7 +403,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([Symbol(), 'object'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type object but received symbol';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type object but received symbol');
         },
         'it throws an error when provided symbol',
       );
@@ -419,7 +412,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType(['test', 'object'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type object but received string';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type object but received string');
         },
         'it throws an error when provided a string',
       );
@@ -428,7 +421,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([10, 'object'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type object but received number';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type object but received number');
         },
         'it throws an error when provided a number',
       );
@@ -437,7 +430,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([true, 'object'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type object but received boolean';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type object but received boolean');
         },
         'it throws an error when provided a boolean',
       );
@@ -446,7 +439,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([() => {}, 'object'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type object but received function';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type object but received function');
         },
         'it throws an error when provided a function',
       );
@@ -472,7 +465,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([undefined, 'string'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type string but received undefined';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type string but received undefined');
         },
         'it throws an error when provided undefined',
       );
@@ -481,7 +474,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([null, 'string'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type string but received null';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type string but received null');
         },
         'it throws an error when provided null',
       );
@@ -490,7 +483,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([NaN, 'string'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type string but received number';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type string but received number');
         },
         'it throws an error when provided NaN',
       );
@@ -499,7 +492,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([Symbol(), 'string'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type string but received symbol';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type string but received symbol');
         },
         'it throws an error when provided symbol',
       );
@@ -508,7 +501,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([10, 'string'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type string but received number';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type string but received number');
         },
         'it throws an error when provided a number',
       );
@@ -517,7 +510,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([true, 'string'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type string but received boolean';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type string but received boolean');
         },
         'it throws an error when provided a boolean',
       );
@@ -526,7 +519,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([() => {}, 'string'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type string but received function';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type string but received function');
         },
         'it throws an error when provided a function',
       );
@@ -535,7 +528,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([{}, 'string'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type string but received object';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type string but received object');
         },
         'it throws an error when provided an object',
       );
@@ -556,7 +549,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([undefined, 'symbol'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type symbol but received undefined';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type symbol but received undefined');
         },
         'it throws an error when provided undefined',
       );
@@ -565,7 +558,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([null, 'symbol'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type symbol but received null';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type symbol but received null');
         },
         'it throws an error when provided null',
       );
@@ -574,7 +567,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([NaN, 'symbol'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type symbol but received number';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type symbol but received number');
         },
         'it throws an error when provided NaN',
       );
@@ -583,7 +576,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([10, 'symbol'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type symbol but received number';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type symbol but received number');
         },
         'it throws an error when provided a number',
       );
@@ -592,7 +585,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([true, 'symbol'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type symbol but received boolean';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type symbol but received boolean');
         },
         'it throws an error when provided a boolean',
       );
@@ -601,7 +594,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([() => {}, 'symbol'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type symbol but received function';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type symbol but received function');
         },
         'it throws an error when provided a function',
       );
@@ -610,7 +603,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([{}, 'symbol'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected type symbol but received object';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected type symbol but received object');
         },
         'it throws an error when provided an object',
       );
@@ -631,7 +624,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([null, 'undefined'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received null';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received null');
         },
         'it throws an error when provided undefined',
       );
@@ -640,7 +633,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([NaN, 'undefined'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received NaN';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received NaN');
         },
         'it throws an error when provided NaN',
       );
@@ -649,7 +642,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([Symbol(), 'undefined'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received Symbol()';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received Symbol()');
         },
         'it throws an error when provided symbol',
       );
@@ -658,7 +651,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([10, 'undefined'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received 10';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received 10');
         },
         'it throws an error when provided a number',
       );
@@ -667,7 +660,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType(['hello', 'undefined'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received "hello"';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received "hello"');
         },
         'it throws an error when provided a string',
       );
@@ -676,7 +669,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([true, 'undefined'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received true';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received true');
         },
         'it throws an error when provided a boolean',
       );
@@ -685,7 +678,8 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([() => {}, 'undefined'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received () => {}';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received function () => {}')
+            || err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received () => {}');
         },
         'it throws an error when provided a function',
       );
@@ -694,7 +688,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType([{}, 'undefined'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received [object Object]';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected value to equal undefined but received [object Object]');
         },
         'it throws an error when provided an object',
       );
@@ -729,7 +723,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType(['not valid', this.simpleValidator], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> The value must be the string "valid"';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> The value must be the string "valid"');
         },
         'it throws an error when provided an invalid value',
       );
@@ -738,7 +732,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType(['not valid', this.complexValidator], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg.test" |> The value must be the string "valid"';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg.test" |> The value must be the string "valid"');
         },
         'it throws an error when provided an invalid value',
       );
@@ -759,7 +753,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType(['not valid', 'NOT SUPPORTED'], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Unsupported validator string. Expected one of any, boolean, function, null, number, object, string, symbol, undefined but received NOT SUPPORTED';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Unsupported validator string. Expected one of any, boolean, function, null, number, object, string, symbol, undefined but received NOT SUPPORTED');
         },
         'it throws an error when provided an invalid value',
       );
@@ -771,7 +765,7 @@ module('Unit | Helper | arg-type', function(hooks) {
           argType(['not valid', {}], this.context)
         },
         function (err) {
-          return err.message === 'Assertion Failed: helper:arg-type |> Property validation failure for argument "myArg" |> Expected validator to be either a supported validator string (any, boolean, function, null, number, object, string, symbol, undefined) or a function but received [object Object]';
+          return err.message.endsWith('helper:arg-type |> Property validation failure for argument "myArg" |> Expected validator to be either a supported validator string (any, boolean, function, null, number, object, string, symbol, undefined) or a function but received [object Object]');
         },
         'it throws an error when provided an invalid value',
       );
