@@ -15,7 +15,7 @@ const BASIC_VALIDATOR = {
 
 /**
  * Helper function to make updating the context path a little cleaner
- * @param {string} path The initial context path (typically will be the argument name)
+ * @param {string} path - The initial context path (typically will be the argument name)
  * @returns {function} Call the function with no args to get the current context value or call the function with an
  * a string argument to append to the path
  */
@@ -31,7 +31,7 @@ export function createContextPath(path) {
 
 /**
  * Ensure context is returned from all validators when an error is returned
- * @param {function} validator The validator to run against the value
+ * @param {function} validator - The validator to run against the value
  * @returns {function}
  */
 function ensureContext(validator) {
@@ -52,7 +52,7 @@ function ensureContext(validator) {
 
 /**
  * Ensure a validator function is always returned when passed special key words or a custom validator
- * @param {string|function} validator Supported validator key words or a custom validator function
+ * @param {string|function} validator - Supported validator key words or a custom validator function
  * @returns {function}
  */
 export function ensureValidator(validator) {
@@ -100,7 +100,7 @@ export function ensureValidator(validator) {
 
 /**
  * Wrapper around ember's typeOf to handle symbols like native typeof does
- * @param {any} value Any value you want to get the type of
+ * @param {any} value - Any value you want to get the type of
  * @returns {string}
  */
 export function typeOf(value) {
@@ -113,7 +113,7 @@ export function typeOf(value) {
 
 /**
  * Convert any value into a string representation. Handles some edge cases but otherwise uses toString
- * @param {any} value Any value you want to convert to a string
+ * @param {any} value - Any value you want to convert to a string
  * @returns {string}
  */
 export function toString(value) {
