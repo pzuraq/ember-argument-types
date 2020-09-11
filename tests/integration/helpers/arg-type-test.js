@@ -154,4 +154,16 @@ module('Integration | Helper | arg-type', function(hooks) {
       assert.ok(true, 'it didnt throw an error for true');
     });
   });
+
+  module('union-of', function() {
+    test('it validates a value against allowed values with one-of', async function(assert) {
+      this.value = 'foo';
+      await render(hbs`
+        {{arg-type this.value (union-of "string" (shape-of foo="string"))}}
+      `);
+      assert.ok(true, 'it didnt throw an error for "foo""');
+      this.set('value', { foo: 'bar' });
+      assert.ok(true, 'it didnt throw an error for a matching shape');
+    });
+  });
 });
