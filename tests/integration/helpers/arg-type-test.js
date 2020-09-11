@@ -98,18 +98,18 @@ module('Integration | Helper | arg-type', function(hooks) {
       };
       this.validator = 'any';
       await render(hbs`
-      {{arg-type
-        this.value
-        (shape-of
-          foo=(shape-of
-            bar="string"
-            baz=(shape-of
-              biz="number"
+        {{arg-type
+          this.value
+          (shape-of
+            foo=(shape-of
+              bar="string"
+              baz=(shape-of
+                biz="number"
+              )
             )
           )
-        )
-      }}
-    `);
+        }}
+      `);
       assert.ok(true, 'it didnt throw an error');
     });
     test('it validates ember objects with shape-of', async function(assert) {
@@ -140,6 +140,18 @@ module('Integration | Helper | arg-type', function(hooks) {
       this.value = A(['foo','bar', 'biz']);
       await render(hbs`{{arg-type this.value (array-of "string")}}`);
       assert.ok(true, 'it didnt throw an error');
+    });
+  });
+
+  module('one-of', function() {
+    test('it validates a value against allowed values with one-of', async function(assert) {
+      this.value = 'foo';
+      await render(hbs`
+        {{arg-type this.value (one-of "foo" true)}}
+      `);
+      assert.ok(true, 'it didnt throw an error for "foo""');
+      this.set('value', true);
+      assert.ok(true, 'it didnt throw an error for true');
     });
   });
 });
