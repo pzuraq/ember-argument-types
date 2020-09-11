@@ -76,3 +76,23 @@ export function createArrayValidator(validator) {
     }
   }
 }
+
+/**
+ * Validator to type check a value against an allowed set of values
+ * @param {any[]} allowedValues - The values which are allowed
+ * @returns {function} Validator function
+ */
+export function createOneOfValidator(allowedValues) {
+  /**
+   * @param {any} value - A value of any type to check against the allowedValues
+   * @param {function} context - The context for the path to any validation error
+   */
+  return function(value, context) {
+    if (!allowedValues.includes(value)) {
+      return [
+        `Expected the value to be${allowedValues.length > 1 ? ' one of' : ''} ${allowedValues.map(toString).join(', ')} but received ${toString(value)}`,
+        context
+      ];
+    }
+  }
+}
