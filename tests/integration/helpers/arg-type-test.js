@@ -1,3 +1,5 @@
+import { A } from '@ember/array';
+import EmberObject from '@ember/object';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
@@ -53,49 +55,49 @@ module('Integration | Helper | arg-type', function(hooks) {
     assert.ok(true, 'it didnt throw an error');
   });
 
-  test('it validates with shape-of', async function(assert) {
-    this.value = {
-      a: NaN,
-      b: true,
-      c() {},
-      d: null,
-      e: 10,
-      f: {},
-      g: 'test',
-      h: Symbol(),
-      i: undefined,
-    };
-    this.validator = 'any';
-    await render(hbs`
-      {{arg-type
-        this.value
-        (shape-of
-          a="any"
-          b="boolean"
-          c="function"
-          d="null"
-          e="number"
-          f="object"
-          g="string"
-          h="symbol"
-          i="undefined"
-        )
-      }}
-    `);
-    assert.ok(true, 'it didnt throw an error');
-  });
-
-  test('it validates nested shapes', async function(assert) {
-    this.value = {
-      foo: {
-        bar: 'test',
-        baz: {
-          biz: 10,
+  module('shape-of', function() {
+    test('it validates objects with shape-of', async function(assert) {
+      this.value = {
+        a: NaN,
+        b: true,
+        c() {},
+        d: null,
+        e: 10,
+        f: {},
+        g: 'test',
+        h: Symbol(),
+        i: undefined,
+      };
+      this.validator = 'any';
+      await render(hbs`
+        {{arg-type
+          this.value
+          (shape-of
+            a="any"
+            b="boolean"
+            c="function"
+            d="null"
+            e="number"
+            f="object"
+            g="string"
+            h="symbol"
+            i="undefined"
+          )
+        }}
+      `);
+      assert.ok(true, 'it didnt throw an error');
+    });
+    test('it validates nested objects with nested shape-of', async function(assert) {
+      this.value = {
+        foo: {
+          bar: 'test',
+          baz: {
+            biz: 10,
+          },
         },
-      },
-    };
-    this.validator = 'any';
-    await render(hbs`
+      };
+      this.validator = 'any';
+      await render(hbs`
       {{arg-type
         this.value
         (shape-of
@@ -108,14 +110,36 @@ module('Integration | Helper | arg-type', function(hooks) {
         )
       }}
     `);
-    assert.ok(true, 'it didnt throw an error');
+      assert.ok(true, 'it didnt throw an error');
+    });
+    test('it validates ember objects with shape-of', async function(assert) {
+      this.value = EmberObject.create({
+        name: 'Foo'
+      });
+      await render(hbs`
+        {{arg-type
+          this.value
+          (shape-of
+            name="string"
+          )
+        }}
+      `);
+      assert.ok(true, 'it didnt throw an error');
+    });
   });
 
-  test('it validates with array-of', async function(assert) {
-    this.value = ['foo', 'bar', 'biz'];
-    await render(hbs`
+  module('array-of', function() {
+    test('it validates arrays with array-of', async function(assert) {
+      this.value = ['foo', 'bar', 'biz'];
+      await render(hbs`
       {{arg-type this.value (array-of "string")}}
     `);
-    assert.ok(true, 'it didnt throw an error');
+      assert.ok(true, 'it didnt throw an error');
+    });
+    test('it validates ember arrays with array-of', async function(assert) {
+      this.value = A(['foo','bar', 'biz']);
+      await render(hbs`{{arg-type this.value (array-of "string")}}`);
+      assert.ok(true, 'it didnt throw an error');
+    });
   });
 });
