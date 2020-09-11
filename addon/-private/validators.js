@@ -96,3 +96,31 @@ export function createOneOfValidator(allowedValues) {
     }
   }
 }
+
+/**
+ * Validator to type check a value against multiple . As long as one validator is happy
+ * @param validators
+ * @returns {function(*=, *=): ([*, *]|undefined)}
+ */
+export function createUnionOfValidator(validators) {
+  /**
+   * @param {any} value - A value of any type to check against the allowedValues
+   * @param {function} context - The context for the path to any validation error
+   */
+  return function(value, context) {
+    const errors = [];
+
+    for (const validator of validators) {
+      const error = ensureValidator(validator)(value, context);
+      if (!error) {
+        return;
+      }
+      errors.push(error);
+    }
+
+    return [
+      'Expected the value to pass one of the provided validators:\n' + errors.map(([error, context]) => `${context()} |> ${error}`).join('\n'),
+      context
+    ];
+  }
+}
