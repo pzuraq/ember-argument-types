@@ -3,7 +3,7 @@
 ## Installation
 
 * `git clone <repository-url>`
-* `cd ember-arg-types`
+* `cd ember-argument-types`
 * `yarn install`
 
 ## Linting

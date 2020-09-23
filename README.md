@@ -1,4 +1,4 @@
-ember-arg-types
+ember-argument-types
 ==============================================================================
 
 [Short description of the addon.]
@@ -16,7 +16,7 @@ Installation
 ------------------------------------------------------------------------------
 
 ```
-ember install ember-arg-types
+ember install ember-argument-types
 ```
 
 

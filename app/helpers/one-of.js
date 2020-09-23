@@ -1,1 +1,1 @@
-export { default, oneOf } from 'ember-arg-types/helpers/one-of';
+export { default, oneOf } from 'ember-argument-types/helpers/one-of';

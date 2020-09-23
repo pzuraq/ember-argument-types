@@ -1,1 +1,1 @@
-export { default, arrayOf } from 'ember-arg-types/helpers/array-of';
+export { default, arrayOf } from 'ember-argument-types/helpers/array-of';

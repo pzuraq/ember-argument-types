@@ -1,1 +1,1 @@
-export { default, argType } from 'ember-arg-types/helpers/arg-type';
+export { default, argType } from 'ember-argument-types/helpers/arg-type';
