@@ -167,11 +167,11 @@ module('Integration | Helper | arg-type', function(hooks) {
     });
   });
 
-  module('optional-type', function() {
+  module('optional', function() {
     test('it validates a value against allowed values with union-of', async function(assert) {
       this.value = 'foo';
       await render(hbs`
-        {{arg-type this.value (optional-type "string")}}
+        {{arg-type this.value (optional "string")}}
       `);
       assert.ok(true, 'it didnt throw an error for "foo"');
       this.set('value', undefined);

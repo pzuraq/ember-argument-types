@@ -6,7 +6,7 @@ import { createContextPath } from '../../helpers/createContextPath';
 module('Unit | Helper | union-of', function(hooks) {
   setupRenderingTest(hooks);
 
-  test('it returns and error and context when validation fails', function(assert) {
+  test('it returns an error and context when validation fails', function(assert) {
     const validatorFn = unionOf(['string', 'boolean']);
 
     let [message, context] = validatorFn(undefined, createContextPath('myArg'));

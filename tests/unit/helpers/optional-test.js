@@ -1,13 +1,13 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { optionalType } from 'dummy/helpers/optional-type';
+import { optional } from 'dummy/helpers/optional';
 import { createContextPath } from '../../helpers/createContextPath';
 
-module('Unit | Helper | optional-type', function(hooks) {
+module('Unit | Helper | optional', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it returns and error and context when validation fails', function(assert) {
-    const validatorFn = optionalType(['string']);
+    const validatorFn = optional(['string']);
 
     let [message, context] = validatorFn(1, createContextPath('myArg'));
     assert.equal(
@@ -23,7 +23,7 @@ module('Unit | Helper | optional-type', function(hooks) {
   });
 
   test('it returns undefined when the value is allowed', function(assert) {
-    const validatorFn = optionalType(['string']);
+    const validatorFn = optional(['string']);
 
     assert.equal(
       validatorFn('foo', createContextPath('myArg')),
