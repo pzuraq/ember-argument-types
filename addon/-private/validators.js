@@ -17,13 +17,33 @@ export function createTypeValidator(expectedType) {
 
 /**
  * Validator to handle strict equality checking
- * @param {string} expectedValue - The value the validator expects
+ * @param {any} expectedValue - The value the validator expects
  * @returns {function} Validator function
  */
 export function createEqualityValidator(expectedValue) {
   return function(value) {
     if (value !== expectedValue) {
       return `Expected value to equal ${toString(expectedValue)} but received ${toString(value)}`;
+    }
+  }
+}
+
+/**
+ * Validator to handle instanceof checking
+ * @param {any} klass - The class the value should be an instance of
+ * @returns {function} Validator function
+ */
+export function createInstanceOfValidator(klass) {
+  /**
+   * @param {object} value - An object to structurally validate
+   * @param {function} context - The context for the path to any validation error
+   */
+  return function(value, context) {
+    if (!(value instanceof klass)) {
+      return [
+        `Expected value to be an instance of ${klass.name ?? toString(klass)} but received ${toString(value)}`,
+        context
+      ];
     }
   }
 }

@@ -180,4 +180,16 @@ module('Integration | Helper | arg-type', function(hooks) {
       assert.ok(true, 'it didnt throw an error for null');
     });
   });
+
+  module('instance-of', function() {
+    test('it validates a value is an instance of a class', async function(assert) {
+      this.now = new Date();
+      this.Date = Date;
+
+      await render(hbs`
+        {{arg-type this.now (instance-of this.Date)}}
+      `);
+      assert.ok(true, 'it didnt throw an error');
+    });
+  });
 });
