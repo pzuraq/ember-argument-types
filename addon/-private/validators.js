@@ -1,6 +1,6 @@
 import { isArray } from '@ember/array';
 import { get } from '@ember/object';
-import { ensureValidator, toString, typeOf } from './utils';
+import { createContextPath, ensureValidator, toString, typeOf } from './utils';
 
 /**
  * Validator to handle type checking via typeof
@@ -89,7 +89,9 @@ export function createArrayValidator(validator) {
     }
 
     for (let i = 0; i < values.length; i++) {
-      const error = ensureValidator(validator)(values[i], context(i));
+      // Clone the current context to generate the correct context in the next iteration
+      const nextContext = createContextPath(context());
+      const error = ensureValidator(validator)(values[i], nextContext(`${i}`));
       if (error) {
         return error;
       }

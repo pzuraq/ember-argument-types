@@ -20,6 +20,10 @@ const BASIC_VALIDATOR = {
  * a string argument to append to the path
  */
 export function createContextPath(path) {
+  /**
+   * @param {string} pathSegment - The path segment to append to the path
+   * @returns {function}
+   */
   return function updateOrRetrieve(pathSegment) {
     if (!pathSegment) {
       return path;

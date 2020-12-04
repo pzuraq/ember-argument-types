@@ -141,6 +141,33 @@ module('Integration | Helper | arg-type', function(hooks) {
       await render(hbs`{{arg-type this.value (array-of "string")}}`);
       assert.ok(true, 'it didnt throw an error');
     });
+    test('it validates arrays of objects with array-of', async function(assert) {
+      this.value = [
+        { name: 'user1' },
+        { name: 'user2' },
+        { name: 'user3' },
+      ];
+      await render(hbs`
+        {{arg-type
+          this.value
+          (array-of (shape-of name="string"))
+        }}
+      `);
+      assert.ok(true, 'it didnt throw an error');
+    });
+    test('it validates nested arrays with array-of', async function(assert) {
+      this.value = [
+        [1,2],
+        [3,4],
+      ];
+      await render(hbs`
+        {{arg-type
+          this.value
+          (array-of (array-of "number"))
+        }}
+      `);
+      assert.ok(true, 'it didnt throw an error');
+    });
   });
 
   module('one-of', function() {
