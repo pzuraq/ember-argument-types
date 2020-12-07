@@ -21,6 +21,18 @@ module('Unit | Helper | shape-of', function(hooks) {
       'it does not update the context when provided a non object'
     );
 
+    [message, context] = validatorFn(null, createContextPath('myArg'));
+    assert.equal(
+      message,
+      'Expected value to be a non-null object but received null',
+      'it returns the expected error message when provided a non object'
+    );
+    assert.equal(
+      context(),
+      'myArg',
+      'it does not update the context when provided a non object'
+    );
+
     [message, context] = validatorFn({}, createContextPath('myArg'));
     assert.equal(
       message,
@@ -42,6 +54,31 @@ module('Unit | Helper | shape-of', function(hooks) {
     assert.equal(
       context(),
       'myArg.hello',
+      'it updates the context when an expected property is invalid'
+    );
+  });
+
+  test('it returns and error and updated context when a property fails for nested object', function(assert) {
+    const validatorFn = shapeOf([], {
+      parent: shapeOf([], {
+        success: 'number',
+        failure: 'boolean',
+      })
+    });
+    const [message, context] = validatorFn({
+      parent: {
+        success: 123,
+        failure: 'failed',
+      }
+    }, createContextPath('myArg'));
+    assert.equal(
+      message,
+      'Expected type boolean but received string',
+      'it returns the expected error message when an expected property is invalid'
+    );
+    assert.equal(
+      context(),
+      'myArg.parent.failure',
       'it updates the context when an expected property is invalid'
     );
   });

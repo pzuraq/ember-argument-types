@@ -64,8 +64,15 @@ export function createShapeValidator(validators) {
       return error;
     }
 
+    // Ensure the value is non-null so that we won't accidentally apply get to a null value
+    if (value === null) {
+      return [`Expected value to be a non-null object but received null`, context];
+    }
+
     for (const key of Object.keys(validators)) {
-      const error = ensureValidator(validators[key])(get(value, key), context(key));
+      // Clone the current context to generate the correct context in the next iteration
+      const nextContext = createContextPath(context());
+      const error = ensureValidator(validators[key])(get(value, key), nextContext(key));
       if (error) {
         return error;
       }
