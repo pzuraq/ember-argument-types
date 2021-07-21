@@ -36,7 +36,7 @@ Basic validation is handled by passing a string as the second argument to the `a
 
 ### Advanced validators
 
-Advanced validation is handled by passing a function as the second argument of the `arg-type` hepler. Internally the basic validation strings are all converted to validator functions. The signature of the functions is as follows:
+Advanced validation is handled by passing a function as the second argument of the `arg-type` helper. Internally the basic validation strings are all converted to validator functions. The signature of the functions is as follows:
 
 ```typescript
 interface Validator {
@@ -50,7 +50,7 @@ Return undefined to indicate the value is valid. Return a string (reason) to ind
 
 ##### `array-of`
 
-The `array-of` hepler is used to validate arrays. It expects a single positional argument of a basic or advanced validator.
+The `array-of` helper is used to validate arrays. It expects a single positional argument of a basic or advanced validator.
 
 ```handlebars
 {{arg-type @myArg (array-of "string")}}
@@ -59,7 +59,7 @@ The `array-of` hepler is used to validate arrays. It expects a single positional
 
 ##### `instance-of`
 
-The `instance-of` hepler is used to validate an argument is an instance of a class. it expects a single positional argument of a class.
+The `instance-of` helper is used to validate an argument is an instance of a class. it expects a single positional argument of a class.
 
 ```handlebars
 {{arg-type @myArg (instance-of this.MyClass)}}
@@ -67,7 +67,7 @@ The `instance-of` hepler is used to validate an argument is an instance of a cla
 
 ##### `optional`
 
-The `optional` hepler is a wrapper around the `union-of` helper. It expects a single positional argument of a basic or advanced validator and adds `null` and `undefined` as valid types.
+The `optional` helper is a wrapper around the `union-of` helper. It expects a single positional argument of a basic or advanced validator and adds `null` and `undefined` as valid types.
 
 ```handlebars
 {{arg-type @myArg (optional "string")}}
